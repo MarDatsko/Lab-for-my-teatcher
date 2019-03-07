@@ -57,12 +57,12 @@ int main()
 				cout << "WIN FRIENDSHIP";
 				break;
 			}
-			else if (user > comp)
+			else if ((user == 0 && comp == 1) || (user == 1 && comp == 2) || (user == 2 && comp == 0))
 			{
 				cout << "YOU WIN";
 				break;
 			}
-			else if (user < comp)
+			else if ((user == 0 && comp == 2) || (user == 1 && comp == 0) || (user == 2 && comp == 1 ))
 			{
 				cout << "YOU LOSS";
 				break;
