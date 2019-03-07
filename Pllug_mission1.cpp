@@ -18,26 +18,25 @@ int main()
 		{
 			break;
 		}
+		else if (choice_user == "rock" || choice_user == "Rock")
+		{
+			user = 0;
+		}
+		else if (choice_user == "scissors" || choice_user == "Scissors")
+		{
+			user = 1;
+		}
+		else if (choice_user == "paper" || choice_user == "Paper")
+		{
+			user = 2;
+		}
+		else
+		{
+			cout << "Incorect word. Try Again"<<endl;
+			continue;
+		}
 		do
 		{
-			if (choice_user == "rock" || choice_user == "Rock")
-			{
-				user = 0;
-			}
-			else if (choice_user == "scissors" || choice_user == "Scissors")
-			{
-				user = 1;
-			}
-			else if (choice_user == "paper" || choice_user == "Paper")
-			{
-				user = 2;
-			}
-			else
-			{
-				cout << "Incorect word. Try Again";
-				break;
-			}
-
 			if (comp == 0)
 			{
 				cout << "Rock";
