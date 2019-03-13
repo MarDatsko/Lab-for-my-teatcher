@@ -9,18 +9,20 @@ void PrintArrey(int *_yura, int size_arrey)
 	}
 }
 
-void AddArrey(int *_yura, int size_arrey,int x)
+int* AddArrey(int *_yura, int size_arrey,int x)
 {
-	int *yura1 = new int[size_arrey + x];
+	int *_yura1 = new int[size_arrey + x];
 	for (int i = 0; i < size_arrey; i++)
 	{
-		yura1[i] = _yura[i];
+		_yura1[i] = _yura[i];
 	}
 	for (int i = size_arrey; i < (size_arrey + x); i++)
 	{
-		yura1[i] = rand()% 234;
+		_yura1[i] = rand()% 234;
 	}
-	PrintArrey(yura1, (size_arrey + x));
+
+	return _yura1;
+	
 }
 
 void DeleteArrey(int *_yura, int size_arrey, int x)
@@ -56,7 +58,11 @@ int main()
 	{
 		cout << "Enter number what you wont add ";
 		cin >> x;
-		AddArrey(yura,SizeArrey,x);
+		
+		int *yura2 = new int[SizeArrey + x];
+		yura2 = AddArrey(yura, SizeArrey, x);
+		PrintArrey(yura2, (SizeArrey + x));
+		delete[] yura;
 	}
 	else if (choice_user == 'd' || choice_user == 'D')
 	{
@@ -68,6 +74,7 @@ int main()
 	{
 		cout << " Error/ Try again/ =) ";
 	}
+	//PrintArrey(yura, (SizeArrey+x));
 	system("pause");
 	return 0;
 }
