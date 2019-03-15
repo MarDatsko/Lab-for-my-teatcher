@@ -20,19 +20,39 @@ int* AddArrey(int *_yura, int size_arrey,int x)
 	{
 		_yura1[i] = rand()% 234;
 	}
-
-	return _yura1;
+	delete[] _yura;
+	size_arrey = size_arrey + x;
+	_yura = new int[size_arrey];
+	for (int i = 0; i < size_arrey; i++)
+	{
+		_yura[i] = _yura1[i];
+	}
+	delete[] _yura1;
+	return _yura;
 	
 }
 
-void DeleteArrey(int *_yura, int size_arrey, int x)
+int* DeleteArrey(int *_yura, int size_arrey, int x)
 {
-	int *yura1 = new int[size_arrey - x];
-	for (int i = 0; i < (size_arrey - x); i++)
+
+	int *_yura1 = new int[size_arrey-1];
+
+	for (int i = 0; i < (x-1); i++)
 	{
-		yura1[i] = _yura[i];
+		_yura1[i] = _yura[i];
 	}
-	PrintArrey(yura1, (size_arrey - x));
+	for (int i = x; i < size_arrey; i++)
+	{
+		_yura1[i] = _yura[i];
+	}
+	delete[] _yura;
+	/*_yura = new int[size_arrey - 1];
+	for (int i = 0; i < (size_arrey-1); i++)
+	{
+		_yura[i] = _yura1[i];
+	}
+	delete[] _yura1;*/
+	return _yura1;
 }
 
 void RandomArrey(int *_yura, int size_arrey)
@@ -47,6 +67,7 @@ int main()
 {	
 	int SizeArrey,x;
 	char choice_user;
+	int *ptr;
 	cout << " Enter the arrey size ";
 	cin >> SizeArrey;
 	int *yura = new int[SizeArrey];
@@ -58,23 +79,27 @@ int main()
 	{
 		cout << "Enter number what you wont add ";
 		cin >> x;
-		
-		int *yura2 = new int[SizeArrey + x];
-		yura2 = AddArrey(yura, SizeArrey, x);
-		PrintArrey(yura2, (SizeArrey + x));
-		delete[] yura;
+		ptr = AddArrey(yura, SizeArrey, x);
+		for (int i = 0; i < SizeArrey + x; i++)
+		{
+			cout << ptr[i]<<" ";
+		}
+
 	}
 	else if (choice_user == 'd' || choice_user == 'D')
 	{
 		cout << "Enter number what you wont delete ";
 		cin >> x;
-		DeleteArrey(yura, SizeArrey, x);
+		ptr = DeleteArrey(yura, SizeArrey, x);
+		for (int i = 0; i < (SizeArrey); i++)
+		{
+			cout << ptr[i] << " ";
+		}
 	}
 	else
 	{
 		cout << " Error/ Try again/ =) ";
 	}
-	//PrintArrey(yura, (SizeArrey+x));
 	system("pause");
 	return 0;
 }
